@@ -4,25 +4,22 @@ import bisect
 def binary_search(int_list, target, start, end):
     # TODO: Fill this in.
 
+    mid = (start + end)//2
 
-    if target < int_list[end//2]:
-        return binary_search(int_list, target, start, end//2)
+    if target == int_list[mid]:
+        return mid
 
-    elif target == int_list[end//2]:
-        return end//2
+    elif start >= mid:
+        return -1
 
-    elif target > int_list[end//2]:
-        return binary_search(int_list, target, end//2, end)
+    elif target < int_list[mid]:
+        return binary_search(int_list, target, start, mid)
+
+    elif target > int_list[mid]:
+        return binary_search(int_list, target, mid, end)
 
     else:
         return -1
-
-#def search(int_list, target, x, y):
-#    for i in range(x, y):
-#        if int_list[i]== target:
-#            return i
-#    return -1
-
 
 def get_random_list(length, min_int, max_int):
     result = [];
