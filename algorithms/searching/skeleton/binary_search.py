@@ -32,5 +32,14 @@ def main():
     # Test04: target is smaller than the minimum value in list.
     print(binary_search(int_list, -1, 0, len(int_list)))
 
+    #Test05:
+    print(binary_search(int_list, 32010, 0, len(int_list)))
+
+    #Test06:
+    print(binary_search(int_list, 1, 0, len(int_list)))
+
+    #Test07:
+    print(binary_search(int_list, 6, 0, len(int_list)))
+
 if __name__ == "__main__":
     main()
