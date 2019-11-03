@@ -3,6 +3,30 @@ import random
 def insertion_sort(int_list):
     # TODO: Fill this in
 
+#   Insertion-Sort(A)
+#   for j = 2 to A.length
+#      key = A[j]
+#      //insert A[j] into the sorted sequence A[1..j-1]
+#   i = j - 1
+#   while i > 0 and A[i] > key
+#      A[i + 1] = A[i]
+#      i = i - 1
+#   A[i + 1] = key
+
+
+    for x in range(1, len(int_list)):
+
+        key = int_list[x]
+
+        y = x - 1
+
+        while y >= 0 and int_list[y] > key:
+            int_list[y + 1] = int_list[y]
+            y = y - 1
+
+        int_list[y + 1] = key
+
+
 def check(sorted_list):
     for i in range(len(sorted_list) - 1):
         if sorted_list[i] > sorted_list[i + 1]:
