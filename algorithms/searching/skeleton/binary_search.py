@@ -1,3 +1,6 @@
+import random
+import bisect
+
 def binary_search(int_list, target, start, end):
     # TODO: Fill this in.
 
@@ -17,6 +20,23 @@ def binary_search(int_list, target, start, end):
 
     else:
         return -1
+
+def get_random_list(length, min_int, max_int):
+    result = [];
+    for i in range(length):
+        result.append(random.randrange(min_int, max_int))
+    result.sort()
+    return result
+
+def get_random_int(min_int, max_int):
+    return random.randrange(min_int, max_int)
+
+def check(int_list, target, result):
+    if result == -1:
+        return not (target in int_list)
+    elif result < 0 or result >= len(int_list):
+        return False
+    return int_list[result] == target
 
 def main():
     # Test01: target is in the list.
@@ -40,6 +60,25 @@ def main():
 
     #Test07:
     print(binary_search(int_list, 6, 0, len(int_list)))
+
+    num_tests = 100
+    rand_length = 10000
+    min_int = 1
+    max_int = 100000
+    print("Running", num_tests, "tests on random lists of length", rand_length)
+    pass_cnt = 0
+    # Test05: Test on random lists.
+    for i in range(100):
+        random_list = get_random_list(rand_length, min_int, max_int)
+        target = get_random_int(min_int, max_int)
+        result = binary_search(random_list, target, 0, rand_length)
+        if check(random_list, target, result):
+            print("PASS")
+            pass_cnt += 1
+        else:
+            print("FAIL")
+
+    print("Passed", pass_cnt, "tests.")
 
 if __name__ == "__main__":
     main()
